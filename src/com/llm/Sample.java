@@ -1,8 +1,8 @@
-package llm;
+package com.llm;
 
 public class Sample {
-    int[] inputChunk;
-    int[] targetChunk;
+    private int[] inputChunk;
+    private int[] targetChunk;
 
     public Sample(int[] inputChunk, int[] targetChunk) {
         this.inputChunk = inputChunk;

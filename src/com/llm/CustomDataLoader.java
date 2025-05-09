@@ -1,4 +1,4 @@
-package llm;
+package com.llm;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -56,8 +56,8 @@ public class CustomDataLoader implements Iterable<Batch> {
 
                 for (int idx : batchIndices) {
                     Sample sample = dataset.get(idx);
-                    inputBatch.add(sample.inputChunk);
-                    targetBatch.add(sample.targetChunk);
+                    inputBatch.add(sample.getInputChunk());
+                    targetBatch.add(sample.getTargetChunk());
                 }
 
                 currentIndex += batchSize;

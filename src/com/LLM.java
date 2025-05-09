@@ -1,7 +1,15 @@
-package llm;
+package com;
 
 import java.util.Arrays;
 import java.util.List;
+
+import com.llm.CustomDataLoader;
+import com.llm.DataLoaderFactory;
+import com.llm.GPTDatasetV1;
+import com.llm.GPTTraining;
+import com.llm.Sample;
+import com.llm.SimpleTokenizer;
+import com.llm.UrlContentReader;
 
 public class LLM {
 
@@ -25,8 +33,8 @@ public class LLM {
 		for (int i = 0; i < 5; i++) {
 			Sample sample = samples.get(i);
 			System.out.println("Sample " + i + ":");
-			System.out.println("Input: " + Arrays.toString(sample.inputChunk));
-			System.out.println("Target: " + Arrays.toString(sample.targetChunk));
+			System.out.println("Input: " + Arrays.toString(sample.getInputChunk()));
+			System.out.println("Target: " + Arrays.toString(sample.getTargetChunk()));
 		}
 		CustomDataLoader dataloader = DataLoaderFactory.createDataloaderV1(rawText, stride, false, false, stride, maxLength, stride, tokenizer);
 		GPTTraining trainer = new GPTTraining(tokenizer, embedDim, maxLength, batchSize, epochs, learningRate);

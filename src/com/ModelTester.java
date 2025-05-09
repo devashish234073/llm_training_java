@@ -1,6 +1,8 @@
-package llm;
+package com;
 
 import java.util.Scanner;
+
+import com.llm.SimpleGPT;
 
 public class ModelTester {
 	public static void main(String[] args) {
