@@ -32,9 +32,7 @@ public class LLM {
 		System.out.println("Number of samples: " + samples.size());
 		for (int i = 0; i < 5; i++) {
 			Sample sample = samples.get(i);
-			System.out.println("Sample " + i + ":");
-			System.out.println("Input: " + Arrays.toString(sample.getInputChunk()));
-			System.out.println("Target: " + Arrays.toString(sample.getTargetChunk()));
+			System.out.println("Sample " + i + ":\n"+sample);
 		}
 		CustomDataLoader dataloader = DataLoaderFactory.createDataloaderV1(rawText, stride, false, false, stride, maxLength, stride, tokenizer);
 		GPTTraining trainer = new GPTTraining(tokenizer, embedDim, maxLength, batchSize, epochs, learningRate);

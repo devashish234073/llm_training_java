@@ -25,7 +25,7 @@ public class GPTDatasetV1 {
                 targetChunk[j] = tokenIds.get(i + j + 1);
             }
             
-            this.samples.add(new Sample(inputChunk, targetChunk));
+            this.samples.add(new Sample(tokenizer, inputChunk, targetChunk));
         }
     }
     

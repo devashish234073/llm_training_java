@@ -70,6 +70,7 @@ public class GPTTraining {
 
 			float avgLoss = totalLoss / batchCount;
 			System.out.printf("Epoch %d/%d - Avg Loss: %.4f%n", epoch + 1, epochs, avgLoss);
+			//saveModel("simple_gpt_"+epoch+".bin");
 		}
 		saveModel("simple_gpt.bin");
 	}
