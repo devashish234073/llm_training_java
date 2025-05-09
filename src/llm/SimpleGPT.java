@@ -339,7 +339,7 @@ public class SimpleGPT implements Serializable {
 	public static SimpleGPT loadModel(String path) throws IOException, ClassNotFoundException {
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path))) {
 			@SuppressWarnings("unchecked")
-			Map<String, float[][]> params = (Map<String, float[][]>) ois.readObject();
+			//Map<String, float[][]> params = (Map<String, float[][]>) ois.readObject();
 			SimpleGPT model = (SimpleGPT) ois.readObject();
 			System.out.println("Model loaded from " + path);
 			return model;

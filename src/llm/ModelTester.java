@@ -7,7 +7,7 @@ public class ModelTester {
 		try {
 			Scanner scanner = new Scanner(System.in);
             // Load saved model
-			String prompt = null;
+			String prompt = "";
             SimpleGPT model = SimpleGPT.loadModel("simple_gpt.bin");
             if (model == null) {
 				System.out.println("Failed to load model.");
