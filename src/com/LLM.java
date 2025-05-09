@@ -34,7 +34,7 @@ public class LLM {
 			Sample sample = samples.get(i);
 			System.out.println("Sample " + i + ":\n"+sample);
 		}
-		CustomDataLoader dataloader = DataLoaderFactory.createDataloaderV1(rawText, stride, false, false, stride, maxLength, stride, tokenizer);
+		//CustomDataLoader dataloader = DataLoaderFactory.createDataloaderV1(rawText, stride, false, false, stride, maxLength, stride, tokenizer);
 		GPTTraining trainer = new GPTTraining(tokenizer, embedDim, maxLength, batchSize, epochs, learningRate);
         trainer.train(dataset);
 	}
