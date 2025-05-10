@@ -3,13 +3,8 @@ package com;
 import java.util.Arrays;
 import java.util.List;
 
-import com.llm.CustomDataLoader;
-import com.llm.DataLoaderFactory;
-import com.llm.GPTDatasetV1;
-import com.llm.GPTTraining;
-import com.llm.Sample;
 import com.llm.SimpleTokenizer;
-import com.llm.UrlContentReader;
+import com.util.UrlContentReader;
 
 public class LLM {
 
@@ -17,26 +12,12 @@ public class LLM {
 		String rawText = UrlContentReader.read("https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/refs/heads/main/ch02/01_main-chapter-code/the-verdict.txt", "data.txt");
 		//System.out.println(rawText);
 		SimpleTokenizer tokenizer = new SimpleTokenizer(rawText);
+		System.out.println("Vocabulary Size: " + tokenizer.getVocabSize());
 		List<Integer> encoded = tokenizer.encode("The quick brown fox jumps over the lazy dog");
 		System.out.println("Encoded: " + encoded);
 		List<String> decoded = tokenizer.decode(encoded);
 		System.out.println("Decoded: " + decoded);
-		int maxLength = 128;
-		int embedDim = 128;
-		int stride = 64;
-		int batchSize = 32;
-		int epochs = 10;
-		float learningRate = 0.001f;
-		GPTDatasetV1 dataset = new GPTDatasetV1(rawText, maxLength, stride, tokenizer);
-		List<Sample> samples = dataset.getSamples();
-		System.out.println("Number of samples: " + samples.size());
-		for (int i = 0; i < 5; i++) {
-			Sample sample = samples.get(i);
-			System.out.println("Sample " + i + ":\n"+sample);
-		}
-		//CustomDataLoader dataloader = DataLoaderFactory.createDataloaderV1(rawText, stride, false, false, stride, maxLength, stride, tokenizer);
-		GPTTraining trainer = new GPTTraining(tokenizer, embedDim, maxLength, batchSize, epochs, learningRate);
-        trainer.train(dataset);
+		System.out.println("Decoded String: " + tokenizer.decodeToString(encoded));
 	}
 
 }
