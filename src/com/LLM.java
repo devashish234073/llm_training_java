@@ -23,11 +23,15 @@ public class LLM {
 		int tokenVectorDimension = 128;
 		PostionalEncoder postionalEncoder = new PostionalEncoder();
 		EmbeddingGenerator embeddingGenerator = new EmbeddingGenerator(tokenizer.getVocabSize(), tokenVectorDimension);
-		encoded.forEach(tokenId -> {
-			double[] embedding = embeddingGenerator.getEmbedding(tokenId);
-			double[] positionalEncoding = postionalEncoder.getPositionalEncoding(tokenId, tokenVectorDimension);
-			System.out.println("Token ID: " + tokenId + ", Embedding: " + Arrays.toString(embedding)+"\n     Positional Encoding: " + Arrays.toString(positionalEncoding));
-		});
+		for (int positionInSequence = 0; positionInSequence < encoded.size(); positionInSequence++) {
+            int tokenId = encoded.get(positionInSequence);
+            double[] embedding = embeddingGenerator.getEmbedding(tokenId);
+            double[] positionalEncoding = PostionalEncoder.getPositionalEncoding(positionInSequence, tokenVectorDimension);
+            System.out.println("Token ID: " + tokenId + 
+                               ", Position: " + positionInSequence + 
+                               ", Embedding: " + Arrays.toString(embedding) + 
+                               "\n     Positional Encoding: " + Arrays.toString(positionalEncoding));
+        }
 	}
 
 }
