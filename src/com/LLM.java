@@ -3,6 +3,8 @@ package com;
 import java.util.Arrays;
 import java.util.List;
 
+import com.llm.EmbeddingGenerator;
+import com.llm.PostionalEncoder;
 import com.llm.SimpleTokenizer;
 import com.util.UrlContentReader;
 
@@ -18,6 +20,14 @@ public class LLM {
 		List<String> decoded = tokenizer.decode(encoded);
 		System.out.println("Decoded: " + decoded);
 		System.out.println("Decoded String: " + tokenizer.decodeToString(encoded));
+		int tokenVectorDimension = 128;
+		PostionalEncoder postionalEncoder = new PostionalEncoder();
+		EmbeddingGenerator embeddingGenerator = new EmbeddingGenerator(tokenizer.getVocabSize(), tokenVectorDimension);
+		encoded.forEach(tokenId -> {
+			double[] embedding = embeddingGenerator.getEmbedding(tokenId);
+			double[] positionalEncoding = postionalEncoder.getPositionalEncoding(tokenId, tokenVectorDimension);
+			System.out.println("Token ID: " + tokenId + ", Embedding: " + Arrays.toString(embedding)+"\n     Positional Encoding: " + Arrays.toString(positionalEncoding));
+		});
 	}
 
 }
