@@ -21,7 +21,6 @@ public class LLM {
 		System.out.println("Decoded: " + decoded);
 		System.out.println("Decoded String: " + tokenizer.decodeToString(encoded));
 		int tokenVectorDimension = 128;
-		PostionalEncoder postionalEncoder = new PostionalEncoder();
 		EmbeddingGenerator embeddingGenerator = new EmbeddingGenerator(tokenizer.getVocabSize(), tokenVectorDimension);
 		for (int positionInSequence = 0; positionInSequence < encoded.size(); positionInSequence++) {
             int tokenId = encoded.get(positionInSequence);
