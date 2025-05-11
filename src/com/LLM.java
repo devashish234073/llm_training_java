@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.llm.EmbeddingGenerator;
-import com.llm.PostionalEncoder;
+import com.llm.PositionalEncoder;
 import com.llm.SimpleTokenizer;
 import com.util.UrlContentReader;
 
@@ -25,7 +25,7 @@ public class LLM {
 		for (int positionInSequence = 0; positionInSequence < encoded.size(); positionInSequence++) {
             int tokenId = encoded.get(positionInSequence);
             double[] embedding = embeddingGenerator.getEmbedding(tokenId);
-            double[] positionalEncoding = PostionalEncoder.getPositionalEncoding(positionInSequence, tokenVectorDimension);
+            double[] positionalEncoding = PositionalEncoder.getPositionalEncoding(positionInSequence, tokenVectorDimension);
             System.out.println("Token ID: " + tokenId + 
                                ", Position: " + positionInSequence + 
                                ", Embedding: " + Arrays.toString(embedding) + 

@@ -1,6 +1,6 @@
 package com.llm;
 
-public class PostionalEncoder {
+public class PositionalEncoder {
 	public static double[] getPositionalEncoding(int pos, int tokenVectorDimension) {//tokenVectorDimension is also called embedding dimension
         double[] encoding = new double[tokenVectorDimension];
         
